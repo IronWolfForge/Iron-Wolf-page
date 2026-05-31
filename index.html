@@ -2096,62 +2096,6 @@
       </div>
     </section>
 
-    <!-- JavaScript для отправки формы -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("contactForm");
-        if (!form) return; // Если формы нет — выходим
-
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
-
-          const submitBtn = document.getElementById("submitBtn");
-          const btnText = document.getElementById("btnText");
-          const btnLoader = document.getElementById("btnLoader");
-          const formMessage = document.getElementById("formMessage");
-
-          const formData = new FormData(form);
-
-          const FORMSPREE_ID = "mredwgvp";
-          const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
-
-          // Показываем загрузку
-          submitBtn.classList.add("loading");
-          btnText.style.display = "none";
-          btnLoader.style.display = "inline";
-          formMessage.style.display = "none";
-
-          try {
-            const response = await fetch(FORMSPREE_URL, {
-              method: "POST",
-              headers: { Accept: "application/json" },
-              body: formData,
-            });
-
-            if (response.ok) {
-              formMessage.textContent =
-                "✅ Thank you! Message sent successfully.";
-              formMessage.classList.add("success");
-              form.reset();
-            } else {
-              throw new Error("Failed to send");
-            }
-          } catch (error) {
-            formMessage.textContent = `❌ Error: ${error.message}. Try again or email us.`;
-            formMessage.classList.add("error");
-          } finally {
-            submitBtn.classList.remove("loading");
-            btnText.style.display = "inline";
-            btnLoader.style.display = "none";
-            formMessage.style.display = "block";
-            setTimeout(() => {
-              formMessage.style.display = "none";
-            }, 6000);
-          }
-        });
-      });
-    </script>
-
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
       <div class="footer-content">
@@ -2416,10 +2360,9 @@
       coinObserver.observe(coinSection);
 
       // ===== CONTACT FORM =====
-
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById("contactForm");
-        if (!form) return; // Если формы нет — выходим
+        if (!form) return;
 
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
@@ -2430,15 +2373,14 @@
           const formMessage = document.getElementById("formMessage");
 
           const formData = new FormData(form);
+          const FORMSPREE_URL = "https://formspree.io/f/mredwgvp";
 
-          const FORMSPREE_ID = "mredwgvp";
-          const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
-
-          // Показываем загрузку
+          // UI: состояние загрузки
           submitBtn.classList.add("loading");
           btnText.style.display = "none";
           btnLoader.style.display = "inline";
           formMessage.style.display = "none";
+          formMessage.className = "form-notification";
 
           try {
             const response = await fetch(FORMSPREE_URL, {
@@ -2447,22 +2389,38 @@
               body: formData,
             });
 
+            // Безопасный парсинг ответа
+            let data;
+            const contentType = response.headers.get("content-type");
+            if (contentType?.includes("application/json")) {
+              data = await response.json();
+            } else {
+              data = {
+                error: (await response.text()) || `HTTP ${response.status}`,
+              };
+            }
+
             if (response.ok) {
               formMessage.textContent =
                 "✅ Thank you! Message sent successfully.";
               formMessage.classList.add("success");
               form.reset();
             } else {
-              throw new Error("Failed to send");
+              throw new Error(
+                data?.errors?.[0]?.message ||
+                  data?.error ||
+                  `Server error: ${response.status}`,
+              );
             }
           } catch (error) {
-            formMessage.textContent = `❌ Error: ${error.message}. Try again or email us.`;
+            formMessage.textContent = `❌ ${error.message || "Failed to send. Try again."}`;
             formMessage.classList.add("error");
           } finally {
             submitBtn.classList.remove("loading");
             btnText.style.display = "inline";
             btnLoader.style.display = "none";
             formMessage.style.display = "block";
+
             setTimeout(() => {
               formMessage.style.display = "none";
             }, 6000);
