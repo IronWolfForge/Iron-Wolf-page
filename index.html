@@ -93,9 +93,9 @@
       }
 
       .nav-logo img {
-        src:;
         width: 40px;
         height: 40px;
+        border-radius: 50%;
       }
 
       .nav-logo-text {
@@ -508,6 +508,10 @@
         animation: coinFloat 4s ease-in-out infinite;
       }
 
+      .coin-logo {
+        border-radius: 50%;
+      }
+
       @keyframes coinFloat {
         0%,
         100% {
@@ -848,6 +852,7 @@
       .about-wolf-logo {
         display: flex;
         justify-content: center;
+        border-radius: 50%;
       }
 
       .about-wolf-logo svg {
@@ -902,11 +907,253 @@
         flex-shrink: 0;
       }
 
+      /* ===== CONTACT SECTION ===== */
+
+      .contact-section {
+        padding: 80px 20px;
+        background-color: var(--bg-primary);
+        position: relative;
+      }
+
+      .contact-container {
+        max-width: 700px; /* Ограничиваем ширину для аккуратного вида */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        text-align: center;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      /* Общие стили для карточек */
+      .contact-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .contact-card:hover {
+        border-color: var(--border-glow);
+        box-shadow: 0 0 20px rgba(255, 77, 77, 0.05);
+      }
+
+      .contact-card h3 {
+        color: var(--text-primary);
+        font-size: 1.4rem;
+        margin-bottom: 25px;
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Декоративная линия под заголовком */
+      .contact-card h3::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 2px;
+        background: var(--accent-primary);
+        margin: 10px auto 0;
+        border-radius: 2px;
+      }
+
+      /* Список информации */
+      .info-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .info-list li {
+        color: var(--text-secondary);
+        font-size: 1rem;
+      }
+
+      .info-list li strong {
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-right: 8px;
+      }
+
+      .info-list a {
+        color: var(--accent-secondary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .info-list a:hover {
+        color: var(--accent-primary);
+        text-decoration: underline;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .social-btn {
+        padding: 8px 16px;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .social-btn:hover {
+        background: var(--accent-primary);
+        color: white;
+        border-color: var(--accent-primary);
+      }
+
+      /* ===== FORM STYLES ===== */
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .form-group {
+        text-align: left;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 14px 16px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--accent-secondary);
+        box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      textarea.form-input {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      /* Кнопка с вашим градиентом или акцентом */
+      .btn-submit {
+        margin-top: 10px;
+        padding: 16px 32px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        color: #fff;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 77, 77, 0.5);
+        filter: brightness(1.1);
+      }
+
+      .btn-submit:active {
+        transform: translateY(0);
+      }
+
+      /* Стили для уведомлений формы */
+      .form-notification {
+        margin-top: 20px;
+        padding: 16px 20px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        text-align: center;
+        animation: slideIn 0.3s ease;
+      }
+
+      .form-notification.success {
+        background: rgba(34, 197, 94, 0.15);
+        border: 1px solid #22c55e;
+        color: #4ade80;
+      }
+
+      .form-notification.error {
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid #ef4444;
+        color: #f87171;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Состояние кнопки при загрузке */
+      .btn-submit.loading {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .btn-submit.loading:hover {
+        transform: none;
+      }
+
       /* ===== FOOTER ===== */
 
       .wolf-footer {
         height: 400px;
         width: 400px;
+        border-radius: 50%;
       }
 
       .footer {
@@ -1174,15 +1421,15 @@
       </a>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#services">Услуги</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#coin">IRON COIN</a></li>
-        <li><a href="#portfolio">Портфолио</a></li>
-        <li><a href="#team">Команда</a></li>
-        <li><a href="#about">О нас</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#about">About us</a></li>
       </ul>
 
       <div class="nav-btn-wrap">
-        <a href="#services" class="nav-btn">Начать</a>
+        <a href="#contact" class="nav-btn">Contact</a>
       </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -1199,10 +1446,9 @@
       <div class="hero-content">
         <h1 class="hero-title">IRON WOLF</h1>
         <p class="hero-subtitle">
-          Решение в сфере IT — специализируемся на программировании,<br />
-          информатике и маркетинговых услугах.
+          We build fast websites and digital brands for small businesses.
         </p>
-        <a href="#services" class="hero-cta">Узнать больше</a>
+        <a href="#services" class="hero-cta">Learn more</a>
         <div class="hero-dots">
           <span class="active"></span>
           <span></span>
@@ -1217,9 +1463,9 @@
     <section class="section" id="services">
       <div class="section-container">
         <div class="section-header reveal">
-          <h2 class="section-title">Услуги</h2>
+          <h2 class="section-title">Services</h2>
           <p class="section-desc">
-            Комплексные IT-решения для вашего бизнеса и проектов
+            Comprehensive IT solutions for your business and projects
           </p>
         </div>
         <div class="services-grid">
@@ -1231,15 +1477,17 @@
                 <line x1="14" y1="4" x2="10" y2="20" />
               </svg>
             </div>
-            <h3>Программирование</h3>
+            <h3>WEB DEVELOPMENT</h3>
             <p>
-              Разработка программного обеспечения любой сложности — от
-              веб-приложений до мобильных решений.
+              Modern websites and web solutions focused on performance,
+              usability and business goals.
             </p>
             <ul class="service-list">
-              <li>Веб-разработка</li>
-              <li>Мобильные приложения</li>
-              <li>API и интеграции</li>
+              <li>Business websites</li>
+              <li>Landing pages</li>
+              <li>Website modernization</li>
+              <li>Responsive development</li>
+              <li>Custom frontend solutions</li>
             </ul>
           </div>
           <div class="service-card reveal">
@@ -1251,15 +1499,17 @@
                 <line x1="15" y1="9" x2="15.01" y2="9" />
               </svg>
             </div>
-            <h3>Маркетинговые решения</h3>
+            <h3>UI / UX DESIGN</h3>
             <p>
-              Стратегии продвижения, SEO-оптимизация и цифровой маркетинг для
-              роста вашего бизнеса.
+              Creating intuitive and visually appealing digital experiences that
+              help users take action.
             </p>
             <ul class="service-list">
-              <li>SEO-оптимизация</li>
-              <li>SMM продвижение</li>
-              <li>Контент-маркетинг</li>
+              <li>Interface design</li>
+              <li>User experience optimization</li>
+              <li>Wireframes and prototypes</li>
+              <li>Conversion-focused layouts</li>
+              <li>Mobile-first design</li>
             </ul>
           </div>
           <div class="service-card reveal">
@@ -1270,15 +1520,17 @@
                 <line x1="12" y1="17" x2="12" y2="21" />
               </svg>
             </div>
-            <h3>Информатика и IT</h3>
+            <h3>BRANDING & DIGITAL IDENTITY</h3>
             <p>
-              Консультации, обучение и внедрение IT-решений для бизнеса любого
-              масштаба.
+              Building memorable visual identities that help businesses stand
+              out and communicate clearly.
             </p>
             <ul class="service-list">
-              <li>IT-консалтинг</li>
-              <li>Обучение технологиям</li>
-              <li>Автоматизация процессов</li>
+              <li>Brand identity</li>
+              <li>Logo design</li>
+              <li>Color systems</li>
+              <li>Visual guidelines</li>
+              <li>Brand positioning</li>
             </ul>
           </div>
           <div class="service-card reveal">
@@ -1289,15 +1541,17 @@
                 <path d="M2 12l10 5 10-5" />
               </svg>
             </div>
-            <h3>Дизайн и UI/UX</h3>
+            <h3>WEBSITE REDESIGN & MODERNIZATION</h3>
             <p>
-              Создание современных интерфейсов с акцентом на пользовательский
-              опыт и эстетику.
+              We improve and rebuild existing websites to make them modern, fast
+              and conversion-focused.
             </p>
             <ul class="service-list">
-              <li>UI/UX дизайн</li>
-              <li>Графический дизайн</li>
-              <li>Брендинг</li>
+              <li>Website audits and structure improvements</li>
+              <li>UI/UX redesign</li>
+              <li>Frontend refactoring (HTML / CSS / JS)</li>
+              <li>Performance optimization</li>
+              <li>Mobile-first adaptation</li>
             </ul>
           </div>
           <div class="service-card reveal">
@@ -1306,15 +1560,19 @@
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
             </div>
-            <h3>Кибербезопасность</h3>
+            <h3>AUTOMATION & AI WORKFLOWS</h3>
             <p>
-              Защита ваших данных и систем от угроз. Аудит безопасности и
-              пентесты.
+              We build automation systems that save time and reduce manual work
+              using AI tools and no-code platforms.
             </p>
             <ul class="service-list">
-              <li>Аудит безопасности</li>
-              <li>Пентесты</li>
-              <li>Мониторинг угроз</li>
+              <li>Business process automation (Make.com / similar tools)</li>
+              <li>
+                AI-powered data processing (OCR, image-to-text, classification)
+              </li>
+              <li>Google Sheets / CRM automation</li>
+              <li>Lead generation workflows</li>
+              <li>Custom AI-assisted pipelines</li>
             </ul>
           </div>
           <div class="service-card reveal">
@@ -1323,15 +1581,17 @@
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
               </svg>
             </div>
-            <h3>Аналитика и Data Science</h3>
+            <h3>TELEGRAM BOTS & DIGITAL TOOLS</h3>
             <p>
-              Анализ данных, визуализация и принятие решений на основе
-              информации.
+              We develop Telegram bots and lightweight tools for automation,
+              communication and user interaction.
             </p>
             <ul class="service-list">
-              <li>Анализ данных</li>
-              <li>BI-дашборды</li>
-              <li>Прогнозирование</li>
+              <li>Telegram bots for business automation</li>
+              <li>Lead collection and processing systems</li>
+              <li>Simple Telegram-based applications</li>
+              <li>Notifications and workflow bots</li>
+              <li>Integration with APIs and external services</li>
             </ul>
           </div>
         </div>
@@ -1375,32 +1635,34 @@
           <div class="coin-info reveal">
             <div class="coin-badge">
               <span class="coin-badge-dot"></span>
-              Криптовалюта нового поколения
+              EXPERIMENTAL INTERESTS
             </div>
             <h2>IRON WOLF COIN</h2>
             <p>
-              IRON WOLF COIN (IWC) — это наша собственная криптовалютная
-              экосистема, созданная для поддержки инновационных IT-решений и
-              цифровых проектов. Монета обеспечивает быстрые и безопасные
-              транзакции, а также открывает доступ к эксклюзивным сервисам IRON
-              WOLF.
+              <a
+                style="color: #ff4d4d"
+                href="https://pump.fun/coin/7S1hwGb3VpWxiCyDAAhRFiVG7iKtXS9rKmTWBHsQpump"
+              >
+                Go to Iron Wolf Coin
+              </a>
             </p>
             <p>
-              Присоединяйтесь к экосистеме IRON WOLF COIN и получите доступ к
-              уникальным возможностям в мире цифровых технологий.
+              Personal interest in blockchain technologies, digital economies
+              and experimental web systems. Used mainly for learning,
+              experimentation and understanding digital financial ecosystems.
             </p>
             <div class="coin-stats">
               <div class="coin-stat">
                 <div class="coin-stat-value">$0.85</div>
-                <div class="coin-stat-label">Текущая цена</div>
+                <div class="coin-stat-label">Price</div>
               </div>
               <div class="coin-stat">
                 <div class="coin-stat-value">10M</div>
-                <div class="coin-stat-label">Всего монет</div>
+                <div class="coin-stat-label">Monets</div>
               </div>
               <div class="coin-stat">
                 <div class="coin-stat-value">2.4K</div>
-                <div class="coin-stat-label">Холдеров</div>
+                <div class="coin-stat-label">Holders</div>
               </div>
             </div>
           </div>
@@ -1412,9 +1674,9 @@
     <section class="section" id="portfolio">
       <div class="section-container">
         <div class="section-header reveal">
-          <h2 class="section-title">Портфолио</h2>
+          <h2 class="section-title">Portfolio</h2>
           <p class="section-desc">
-            Наши лучшие проекты в сфере программирования и маркетинга
+            Our best projects in the field of programming and hfphf development
           </p>
         </div>
         <div class="portfolio-grid">
@@ -1427,11 +1689,11 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Веб-разработка</span>
-              <h3>Корпоративная платформа</h3>
+              <span class="portfolio-tag">Frontend Development</span>
+              <h3>Fast & modern websites</h3>
               <p>
-                Разработка комплексной веб-платформы для управления
-                бизнес-процессами крупной компании.
+                Building responsive websites and landing pages focused on
+                performance, usability and real business needs.
               </p>
             </div>
           </div>
@@ -1443,11 +1705,11 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Мобильное приложение</span>
-              <h3>Финтех приложение</h3>
+              <span class="portfolio-tag">AI & Workflows</span>
+              <h3>Business automation systems</h3>
               <p>
-                Мобильное приложение для управления финансами с интеграцией IRON
-                WOLF COIN.
+                Automating manual processes using AI tools, APIs and no-code
+                platforms to save time and reduce workload.
               </p>
             </div>
           </div>
@@ -1460,11 +1722,11 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Маркетинг</span>
-              <h3>Рекламная кампания</h3>
+              <span class="portfolio-tag">Bots & Tools</span>
+              <h3>Telegram automation</h3>
               <p>
-                Комплексная маркетинговая стратегия с ROI более 340% для
-                технологического стартапа.
+                Developing Telegram bots and lightweight systems for
+                communication, lead collection and automation.
               </p>
             </div>
           </div>
@@ -1475,10 +1737,11 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Безопасность</span>
-              <h3>Аудит безопасности</h3>
+              <span class="portfolio-tag">Product Design</span>
+              <h3>Interface & UX</h3>
               <p>
-                Проведение полного аудита безопасности для криптовалютной биржи.
+                Designing clean and intuitive interfaces focused on user
+                experience and conversion.
               </p>
             </div>
           </div>
@@ -1489,11 +1752,11 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Data Science</span>
-              <h3>BI-аналитика</h3>
+              <span class="portfolio-tag">Optimization</span>
+              <h3>Redesign & upgrades</h3>
               <p>
-                Внедрение системы бизнес-аналитики с дашбордами реального
-                времени.
+                Improving outdated websites with modern structure, better UX and
+                performance optimization.
               </p>
             </div>
           </div>
@@ -1507,11 +1770,11 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">UI/UX</span>
-              <h3>Редизайн платформы</h3>
+              <span class="portfolio-tag">Exploration</span>
+              <h3>Emerging tech</h3>
               <p>
-                Полный редизайн пользовательского интерфейса для повышения
-                конверсии на 180%.
+                Exploring blockchain ecosystems, digital systems and
+                experimental technologies for learning and insight.
               </p>
             </div>
           </div>
@@ -1523,9 +1786,9 @@
     <section class="section team-section" id="team">
       <div class="section-container">
         <div class="section-header reveal">
-          <h2 class="section-title">Наша команда</h2>
+          <h2 class="section-title">Our team</h2>
           <p class="section-desc">
-            Профессионалы, которые стоят за каждым успешным проектом IRON WOLF
+            The professionals behind every successful IRON WOLF project
           </p>
         </div>
         <div class="team-grid">
@@ -1536,14 +1799,14 @@
                 <circle cx="12" cy="7" r="4" />
               </svg>
             </div>
-            <h3>Алексей Волков</h3>
-            <div class="team-role">CEO & Основатель</div>
+            <h3>Ivan Sladkevich</h3>
+            <div class="team-role">CEO & Founder</div>
             <p>
-              Визионер и лидер IRON WOLF. 10+ лет опыта в IT-индустрии и
-              криптопространстве.
+              Visionary leader of IRONWOLF and Front-end Developer with a strong
+              focus on design, product thinking, and team direction.
             </p>
             <div class="team-socials">
-              <a href="#" aria-label="Telegram">
+              <a href="@ironwolfvojchan" aria-label="Telegram">
                 <svg viewBox="0 0 24 24">
                   <path
                     d="M22.05 1.577c-.393-.016-.784.08-1.117.235-.484.186-4.92 1.902-9.41 3.64-2.246.868-4.492 1.737-6.297 2.436-.902.349-1.748.682-2.474.964-.727.281-1.296.503-1.675.649-.19.073-.367.146-.515.213-.148.066-.237.115-.35.185a.8.8 0 0 0-.257.275c-.065.12-.096.267-.072.435.024.168.104.356.24.535.135.179.323.343.56.475.237.132.52.235.842.308.644.146 1.418.196 2.24.17 1.644-.052 3.598-.404 5.752-1.02.217-.062.428-.126.633-.192.326-.105.634-.21.925-.315 1.934-.699 3.927-1.42 5.858-2.13.966-.355 1.905-.702 2.798-1.035.893-.333 1.734-.65 2.47-.933.368-.141.71-.273 1.005-.393.295-.12.528-.227.686-.307.079-.04.144-.076.19-.106.046-.03.074-.054.085-.072.022-.036.03-.085.022-.15-.008-.064-.04-.137-.095-.21a1.2 1.2 0 0 0-.188-.2c-.145-.127-.328-.237-.537-.327-.21-.09-.447-.162-.703-.212a3.7 3.7 0 0 0-.834-.113z"
@@ -1569,11 +1832,12 @@
                 <circle cx="12" cy="7" r="4" />
               </svg>
             </div>
-            <h3>Мария Стальная</h3>
-            <div class="team-role">CTO</div>
+            <h3>Polina Sladkeivh</h3>
+            <div class="team-role">Financial Director</div>
             <p>
-              Технический гений команды. Эксперт в blockchain, AI и
-              кибербезопасности.
+              Financial Director with 5+ years of experience in banking and
+              lending, specializing in financial flow management and business
+              growth strategy.
             </p>
             <div class="team-socials">
               <a href="#" aria-label="Telegram">
@@ -1600,11 +1864,12 @@
                 <circle cx="12" cy="7" r="4" />
               </svg>
             </div>
-            <h3>Дмитрий Огонь</h3>
-            <div class="team-role">Head of Marketing</div>
+            <h3>Maksim Mukhachev</h3>
+            <div class="team-role">Senior Lead Dev and Engineer</div>
             <p>
-              Стратег и креативщик. Специалист по digital-маркетингу и
-              брендингу.
+              Senior Java Engineer with 10 years of experience in backend
+              development and system architecture, including work at EPAM.
+              Strong expertise in designing scalable enterprise solutions.
             </p>
             <div class="team-socials">
               <a href="#" aria-label="Telegram">
@@ -1631,11 +1896,11 @@
                 <circle cx="12" cy="7" r="4" />
               </svg>
             </div>
-            <h3>Елена Кодова</h3>
-            <div class="team-role">Lead Developer</div>
+            <h3>Denis Kramskyi</h3>
+            <div class="team-role">Developer</div>
             <p>
-              Full-stack разработчик с глубокой экспертизой в React, Node.js и
-              блокчейн-технологиях.
+              Strong mathematics and algorithms specialist with a focus on
+              automation and building efficient computational solutions.
             </p>
             <div class="team-socials">
               <a href="#" aria-label="Telegram">
@@ -1667,44 +1932,163 @@
             <img class="wolf-footer" src="ironwolflogo.jpg" />
           </div>
           <div class="about-info reveal">
-            <h2>О нас</h2>
+            <h2>About us</h2>
             <p>
-              IRON WOLF — это команда профессионалов в сфере информационных
-              технологий, программирования и цифрового маркетинга. Мы создаём
-              инновационные решения, которые помогают бизнесу расти и
-              развиваться.
-            </p>
-            <p>
-              Наша миссия — предоставить лучшие IT-решения и маркетинговые
-              стратегии, делая технологии доступными для каждого. Мы также
-              развиваем собственную криптоэкосистему IRON WOLF COIN.
+              IRON WOLF is a team that specializes in programming, design,
+              automation, and development of Telegram solutions. We create clear
+              and practical digital products: from interfaces and websites to
+              automated systems and bots that help businesses and projects work
+              faster and more efficiently.
             </p>
             <div class="about-features">
               <div class="about-feature">
                 <svg viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span>10+ лет опыта</span>
+                <span>International team</span>
               </div>
               <div class="about-feature">
                 <svg viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span>500+ проектов</span>
+                <span>Flexibility in work</span>
               </div>
               <div class="about-feature">
                 <svg viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span>24/7 поддержка</span>
+                <span>Engineering approach</span>
               </div>
               <div class="about-feature">
                 <svg viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span>Своя криптовалюта</span>
+                <span>Digital ecosystem</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">
+          Let's discuss your project. Fill out the form below or reach out
+          directly.
+        </p>
+
+        <div class="contact-container">
+          <!-- 1. Карточка с информацией -->
+          <div class="contact-card info-card">
+            <h3>Business Details</h3>
+            <ul class="info-list">
+              <li><strong>Contact Person:</strong> Ivan Sladkevich</li>
+              <li><strong>NIP (Poland):</strong>9552584050</li>
+              <li>
+                <strong>Phone:</strong>
+                <a href="#">+48 517 473 712</a>
+              </li>
+              <li>
+                <strong>Email:</strong>
+                <a href="mailto:iron.wolf.vojchan@gmail.com"
+                  >iron.wolf.vojchan@gmail.com</a
+                >
+              </li>
+              <li><strong>Address:</strong> ul. Lumumby 3/336</li>
+              <li><strong>Postal Code:</strong> 91-404 Łódź, Poland</li>
+            </ul>
+
+            <div class="social-links">
+              <a href="#" class="social-btn">Telegram</a>
+              <a href="#" class="social-btn">LinkedIn</a>
+            </div>
+          </div>
+
+          <!-- 2. Форма -->
+          <div class="contact-card">
+            <form
+              class="contact-form"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+            >
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-input"
+                  placeholder="First Name Last Name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="you@company.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-input"
+                  placeholder="Tell us about your project, timeline and budget..."
+                  required
+                ></textarea>
+              </div>
+
+              <!-- GDPR Checkbox -->
+              <div
+                class="form-group"
+                style="display: flex; align-items: start; gap: 12px"
+              >
+                <input
+                  type="checkbox"
+                  id="gdpr"
+                  name="gdpr_consent"
+                  required
+                  style="
+                    margin-top: 4px;
+                    accent-color: var(--accent-primary);
+                    width: 18px;
+                    height: 18px;
+                    cursor: pointer;
+                  "
+                />
+                <label
+                  for="gdpr"
+                  style="
+                    font-size: 0.85rem;
+                    color: var(--text-secondary);
+                    cursor: pointer;
+                    line-height: 1.4;
+                  "
+                >
+                  I agree to the processing of my personal data in accordance
+                  with GDPR regulations.
+                </label>
+              </div>
+
+              <button type="submit" class="btn-submit">Send Message</button>
+
+              <!-- Уведомления -->
+              <div
+                id="formMessage"
+                class="form-notification"
+                style="display: none"
+              ></div>
+            </form>
           </div>
         </div>
       </div>
@@ -1739,12 +2123,12 @@
           </svg>
           <span>IRON WOLF</span>
         </div>
-        <p class="footer-copy">© 2026 IRON WOLF. Все права защищены.</p>
+        <p class="footer-copy">© 2026 IRON WOLF. All rights reserved.</p>
         <div class="footer-links">
-          <a href="#services">Услуги</a>
+          <a href="#services">Services</a>
           <a href="#coin">IWC</a>
-          <a href="#portfolio">Портфолио</a>
-          <a href="#team">Команда</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#team">Team</a>
         </div>
       </div>
     </footer>
@@ -1972,6 +2356,71 @@
       );
 
       coinObserver.observe(coinSection);
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const form = this;
+          const submitBtn = document.getElementById("submitBtn");
+          const btnText = document.getElementById("btnText");
+          const btnLoader = document.getElementById("btnLoader");
+          const formMessage = document.getElementById("formMessage");
+
+          // Получаем данные формы
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+
+          // Ваш Formspree ID (замените на свой!)
+          const FORMSPREE_ID = "mredwgvp"; // Например: 'xnqkvpzy'
+          const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
+
+          // Показываем состояние загрузки
+          submitBtn.classList.add("loading");
+          btnText.style.display = "none";
+          btnLoader.style.display = "inline";
+          formMessage.style.display = "none";
+          formMessage.className = "form-notification";
+
+          try {
+            const response = await fetch(FORMSPREE_URL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+              // Успех
+              formMessage.textContent =
+                "✅ Thank you! Your message has been sent successfully. We will contact you soon.";
+              formMessage.classList.add("success");
+              form.reset();
+            } else {
+              // Ошибка от сервера
+              const errorData = await response.json();
+              throw new Error(errorData.error || "Failed to send message");
+            }
+          } catch (error) {
+            // Ошибка
+            formMessage.textContent = `❌ Error: ${error.message}. Please try again or contact us directly.`;
+            formMessage.classList.add("error");
+          } finally {
+            // Возвращаем кнопку в исходное состояние
+            submitBtn.classList.remove("loading");
+            btnText.style.display = "inline";
+            btnLoader.style.display = "none";
+            formMessage.style.display = "block";
+
+            // Скрываем уведомление через 10 секунд
+            setTimeout(() => {
+              formMessage.style.display = "none";
+            }, 10000);
+          }
+        });
     </script>
   </body>
 </html>
