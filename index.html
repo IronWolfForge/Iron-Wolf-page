@@ -39,7 +39,6 @@
       html {
         scroll-behavior: smooth;
       }
-
       body {
         font-family: "Inter", sans-serif;
         background-color: var(--bg-primary);
@@ -1410,26 +1409,93 @@
       .counter {
         display: inline-block;
       }
+
+      /* ===== LANGUAGE SWITCHER ===== */
+      .lang-switcher {
+        /* Desktop: floating bottom-right */
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        gap: 6px;
+        z-index: 1000;
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 8px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .lang-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-secondary);
+        padding: 8px 14px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        min-width: 40px;
+      }
+
+      .lang-btn:hover {
+        color: var(--text-primary);
+        background: rgba(255, 77, 77, 0.1);
+      }
+
+      .lang-btn.active {
+        background: var(--accent-primary);
+        color: #fff;
+        box-shadow: 0 2px 10px rgba(255, 77, 77, 0.4);
+      }
+
+      /* ===== MOBILE: Fixed top-left ===== */
+      @media (max-width: 768px) {
+        .lang-switcher {
+          position: fixed; /* Фиксированный */
+          top: 70px;
+          left: 30px;
+          right: auto;
+          bottom: auto;
+          display: flex;
+          gap: 4px;
+          padding: 6px;
+          background: rgba(10, 10, 15, 0.95);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border-color);
+          border-radius: 10px;
+          box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+          margin: 0;
+        }
+
+        .lang-btn {
+          padding: 5px 10px;
+          font-size: 0.75rem;
+          min-width: 34px;
+        }
+      }
     </style>
   </head>
   <body>
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar" id="navbar">
-      <a href="#" class="nav-logo">
+      <a href="#about" class="nav-logo">
         <img src="ironwolflogo.jpg" alt="IRON WOLF" />
         <span class="nav-logo-text">IRON WOLF</span>
       </a>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#coin">IRON COIN</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#about">About us</a></li>
+        <li><a href="#services" data-i18n="nav_services">Services</a></li>
+        <li><a href="#coin" data-i18n="nav_coin">IRON COIN</a></li>
+        <li><a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
+        <li><a href="#team" data-i18n="nav_team">Team</a></li>
+        <li><a href="#about" data-i18n="nav_about">About us</a></li>
       </ul>
 
       <div class="nav-btn-wrap">
-        <a href="#contact" class="nav-btn">Contact</a>
+        <a href="#contact" class="nav-btn" data-i18n="nav_contact">Contact</a>
       </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -1444,11 +1510,11 @@
       <canvas class="hero-canvas" id="heroCanvas"></canvas>
       <div class="hero-grid-overlay"></div>
       <div class="hero-content">
-        <h1 class="hero-title">IRON WOLF</h1>
-        <p class="hero-subtitle">
+        <h1 class="hero-title" data-i18n="hero_title">IRON WOLF</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
           We build fast websites and digital brands for small businesses.
         </p>
-        <a href="#services" class="hero-cta">Learn more</a>
+        <a href="#services" class="hero-cta" data-i18n="hero_btn">Learn more</a>
         <div class="hero-dots">
           <span class="active"></span>
           <span></span>
@@ -1463,12 +1529,13 @@
     <section class="section" id="services">
       <div class="section-container">
         <div class="section-header reveal">
-          <h2 class="section-title">Services</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-i18n="services_title">Services</h2>
+          <p class="section-desc" data-i18n="services_subtitle">
             Comprehensive IT solutions for your business and projects
           </p>
         </div>
         <div class="services-grid">
+          <!-- WEB DEVELOPMENT -->
           <div class="service-card reveal">
             <div class="service-icon">
               <svg viewBox="0 0 24 24">
@@ -1477,12 +1544,12 @@
                 <line x1="14" y1="4" x2="10" y2="20" />
               </svg>
             </div>
-            <h3>WEB DEVELOPMENT</h3>
-            <p>
+            <h3 data-i18n="service_web_title">WEB DEVELOPMENT</h3>
+            <p data-i18n="service_web_desc">
               Modern websites and web solutions focused on performance,
               usability and business goals.
             </p>
-            <ul class="service-list">
+            <ul class="service-list" data-i18n="service_web_items">
               <li>Business websites</li>
               <li>Landing pages</li>
               <li>Website modernization</li>
@@ -1490,6 +1557,8 @@
               <li>Custom frontend solutions</li>
             </ul>
           </div>
+
+          <!-- UI / UX DESIGN -->
           <div class="service-card reveal">
             <div class="service-icon">
               <svg viewBox="0 0 24 24">
@@ -1499,12 +1568,12 @@
                 <line x1="15" y1="9" x2="15.01" y2="9" />
               </svg>
             </div>
-            <h3>UI / UX DESIGN</h3>
-            <p>
+            <h3 data-i18n="service_ui_title">UI / UX DESIGN</h3>
+            <p data-i18n="service_ui_desc">
               Creating intuitive and visually appealing digital experiences that
               help users take action.
             </p>
-            <ul class="service-list">
+            <ul class="service-list" data-i18n="service_ui_items">
               <li>Interface design</li>
               <li>User experience optimization</li>
               <li>Wireframes and prototypes</li>
@@ -1512,6 +1581,8 @@
               <li>Mobile-first design</li>
             </ul>
           </div>
+
+          <!-- BRANDING -->
           <div class="service-card reveal">
             <div class="service-icon">
               <svg viewBox="0 0 24 24">
@@ -1520,12 +1591,12 @@
                 <line x1="12" y1="17" x2="12" y2="21" />
               </svg>
             </div>
-            <h3>BRANDING & DIGITAL IDENTITY</h3>
-            <p>
+            <h3 data-i18n="service_brand_title">BRANDING & DIGITAL IDENTITY</h3>
+            <p data-i18n="service_brand_desc">
               Building memorable visual identities that help businesses stand
               out and communicate clearly.
             </p>
-            <ul class="service-list">
+            <ul class="service-list" data-i18n="service_brand_items">
               <li>Brand identity</li>
               <li>Logo design</li>
               <li>Color systems</li>
@@ -1533,6 +1604,8 @@
               <li>Brand positioning</li>
             </ul>
           </div>
+
+          <!-- REDESIGN -->
           <div class="service-card reveal">
             <div class="service-icon">
               <svg viewBox="0 0 24 24">
@@ -1541,12 +1614,14 @@
                 <path d="M2 12l10 5 10-5" />
               </svg>
             </div>
-            <h3>WEBSITE REDESIGN & MODERNIZATION</h3>
-            <p>
+            <h3 data-i18n="service_redesign_title">
+              WEBSITE REDESIGN & MODERNIZATION
+            </h3>
+            <p data-i18n="service_redesign_desc">
               We improve and rebuild existing websites to make them modern, fast
               and conversion-focused.
             </p>
-            <ul class="service-list">
+            <ul class="service-list" data-i18n="service_redesign_items">
               <li>Website audits and structure improvements</li>
               <li>UI/UX redesign</li>
               <li>Frontend refactoring (HTML / CSS / JS)</li>
@@ -1554,18 +1629,22 @@
               <li>Mobile-first adaptation</li>
             </ul>
           </div>
+
+          <!-- AUTOMATION -->
           <div class="service-card reveal">
             <div class="service-icon">
               <svg viewBox="0 0 24 24">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
             </div>
-            <h3>AUTOMATION & AI WORKFLOWS</h3>
-            <p>
+            <h3 data-i18n="service_automation_title">
+              AUTOMATION & AI WORKFLOWS
+            </h3>
+            <p data-i18n="service_automation_desc">
               We build automation systems that save time and reduce manual work
               using AI tools and no-code platforms.
             </p>
-            <ul class="service-list">
+            <ul class="service-list" data-i18n="service_automation_items">
               <li>Business process automation (Make.com / similar tools)</li>
               <li>
                 AI-powered data processing (OCR, image-to-text, classification)
@@ -1575,18 +1654,22 @@
               <li>Custom AI-assisted pipelines</li>
             </ul>
           </div>
+
+          <!-- TELEGRAM BOTS -->
           <div class="service-card reveal">
             <div class="service-icon">
               <svg viewBox="0 0 24 24">
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
               </svg>
             </div>
-            <h3>TELEGRAM BOTS & DIGITAL TOOLS</h3>
-            <p>
+            <h3 data-i18n="service_bots_title">
+              TELEGRAM BOTS & DIGITAL TOOLS
+            </h3>
+            <p data-i18n="service_bots_desc">
               We develop Telegram bots and lightweight tools for automation,
               communication and user interaction.
             </p>
-            <ul class="service-list">
+            <ul class="service-list" data-i18n="service_bots_items">
               <li>Telegram bots for business automation</li>
               <li>Lead collection and processing systems</li>
               <li>Simple Telegram-based applications</li>
@@ -1626,27 +1709,27 @@
                     fill="rgba(255,255,255,0.7)"
                   />
                 </svg>
-                <!-- ВОТ ЭТА СТРОКА НОВАЯ -->
                 <img src="IronWolfCoin.jpg" class="coin-logo" alt="coin logo" />
-                <span class="coin-label">IWC</span>
+                <span class="coin-label" data-i18n="coin_title">IWC</span>
               </div>
             </div>
           </div>
           <div class="coin-info reveal">
             <div class="coin-badge">
               <span class="coin-badge-dot"></span>
-              EXPERIMENTAL INTERESTS
+              <span data-i18n="coin_subtitle">EXPERIMENTAL INTERESTS</span>
             </div>
-            <h2>IRON WOLF COIN</h2>
+            <h2 data-i18n="coin_name">IRON WOLF COIN</h2>
             <p>
               <a
                 style="color: #ff4d4d"
                 href="https://pump.fun/coin/7S1hwGb3VpWxiCyDAAhRFiVG7iKtXS9rKmTWBHsQpump"
+                data-i18n="coin_btn"
               >
                 Go to Iron Wolf Coin
               </a>
             </p>
-            <p>
+            <p data-i18n="coin_desc">
               Personal interest in blockchain technologies, digital economies
               and experimental web systems. Used mainly for learning,
               experimentation and understanding digital financial ecosystems.
@@ -1654,15 +1737,17 @@
             <div class="coin-stats">
               <div class="coin-stat">
                 <div class="coin-stat-value">$0.85</div>
-                <div class="coin-stat-label">Price</div>
+                <div class="coin-stat-label" data-i18n="coin_price">Price</div>
               </div>
               <div class="coin-stat">
                 <div class="coin-stat-value">10M</div>
-                <div class="coin-stat-label">Monets</div>
+                <div class="coin-stat-label" data-i18n="coin_mcap">Monets</div>
               </div>
               <div class="coin-stat">
                 <div class="coin-stat-value">2.4K</div>
-                <div class="coin-stat-label">Holders</div>
+                <div class="coin-stat-label" data-i18n="coin_holders">
+                  Holders
+                </div>
               </div>
             </div>
           </div>
@@ -1674,12 +1759,13 @@
     <section class="section" id="portfolio">
       <div class="section-container">
         <div class="section-header reveal">
-          <h2 class="section-title">Portfolio</h2>
-          <p class="section-desc">
-            Our best projects in the field of programming and hfphf development
+          <h2 class="section-title" data-i18n="portfolio_title">Portfolio</h2>
+          <p class="section-desc" data-i18n="portfolio_subtitle">
+            Our best projects in the field of programming and development
           </p>
         </div>
         <div class="portfolio-grid">
+          <!-- 1. Frontend Development -->
           <div class="portfolio-card reveal">
             <div class="portfolio-img">
               <svg viewBox="0 0 24 24">
@@ -1689,14 +1775,18 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Frontend Development</span>
-              <h3>Fast & modern websites</h3>
-              <p>
+              <span class="portfolio-tag" data-i18n="portfolio_p1_tag"
+                >Frontend Development</span
+              >
+              <h3 data-i18n="portfolio_p1_title">Fast & modern websites</h3>
+              <p data-i18n="portfolio_p1_desc">
                 Building responsive websites and landing pages focused on
                 performance, usability and real business needs.
               </p>
             </div>
           </div>
+
+          <!-- 2. AI & Workflows -->
           <div class="portfolio-card reveal">
             <div class="portfolio-img">
               <svg viewBox="0 0 24 24">
@@ -1705,14 +1795,20 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">AI & Workflows</span>
-              <h3>Business automation systems</h3>
-              <p>
+              <span class="portfolio-tag" data-i18n="portfolio_p2_tag"
+                >AI & Workflows</span
+              >
+              <h3 data-i18n="portfolio_p2_title">
+                Business automation systems
+              </h3>
+              <p data-i18n="portfolio_p2_desc">
                 Automating manual processes using AI tools, APIs and no-code
                 platforms to save time and reduce workload.
               </p>
             </div>
           </div>
+
+          <!-- 3. Bots & Tools -->
           <div class="portfolio-card reveal">
             <div class="portfolio-img">
               <svg viewBox="0 0 24 24">
@@ -1722,14 +1818,18 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Bots & Tools</span>
-              <h3>Telegram automation</h3>
-              <p>
+              <span class="portfolio-tag" data-i18n="portfolio_p3_tag"
+                >Bots & Tools</span
+              >
+              <h3 data-i18n="portfolio_p3_title">Telegram automation</h3>
+              <p data-i18n="portfolio_p3_desc">
                 Developing Telegram bots and lightweight systems for
                 communication, lead collection and automation.
               </p>
             </div>
           </div>
+
+          <!-- 4. Product Design -->
           <div class="portfolio-card reveal">
             <div class="portfolio-img">
               <svg viewBox="0 0 24 24">
@@ -1737,14 +1837,18 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Product Design</span>
-              <h3>Interface & UX</h3>
-              <p>
+              <span class="portfolio-tag" data-i18n="portfolio_p4_tag"
+                >Product Design</span
+              >
+              <h3 data-i18n="portfolio_p4_title">Interface & UX</h3>
+              <p data-i18n="portfolio_p4_desc">
                 Designing clean and intuitive interfaces focused on user
                 experience and conversion.
               </p>
             </div>
           </div>
+
+          <!-- 5. Optimization -->
           <div class="portfolio-card reveal">
             <div class="portfolio-img">
               <svg viewBox="0 0 24 24">
@@ -1752,14 +1856,18 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Optimization</span>
-              <h3>Redesign & upgrades</h3>
-              <p>
+              <span class="portfolio-tag" data-i18n="portfolio_p5_tag"
+                >Optimization</span
+              >
+              <h3 data-i18n="portfolio_p5_title">Redesign & upgrades</h3>
+              <p data-i18n="portfolio_p5_desc">
                 Improving outdated websites with modern structure, better UX and
                 performance optimization.
               </p>
             </div>
           </div>
+
+          <!-- 6. Exploration -->
           <div class="portfolio-card reveal">
             <div class="portfolio-img">
               <svg viewBox="0 0 24 24">
@@ -1770,9 +1878,11 @@
               </svg>
             </div>
             <div class="portfolio-body">
-              <span class="portfolio-tag">Exploration</span>
-              <h3>Emerging tech</h3>
-              <p>
+              <span class="portfolio-tag" data-i18n="portfolio_p6_tag"
+                >Exploration</span
+              >
+              <h3 data-i18n="portfolio_p6_title">Emerging tech</h3>
+              <p data-i18n="portfolio_p6_desc">
                 Exploring blockchain ecosystems, digital systems and
                 experimental technologies for learning and insight.
               </p>
@@ -1786,12 +1896,13 @@
     <section class="section team-section" id="team">
       <div class="section-container">
         <div class="section-header reveal">
-          <h2 class="section-title">Our team</h2>
-          <p class="section-desc">
+          <h2 class="section-title" data-i18n="team_title">Our team</h2>
+          <p class="section-desc" data-i18n="team_subtitle">
             The professionals behind every successful IRON WOLF project
           </p>
         </div>
         <div class="team-grid">
+          <!-- Ivan Sladkevich -->
           <div class="team-card reveal">
             <div class="team-avatar">
               <svg viewBox="0 0 24 24">
@@ -1800,8 +1911,8 @@
               </svg>
             </div>
             <h3>Ivan Sladkevich</h3>
-            <div class="team-role">CEO & Founder</div>
-            <p>
+            <div class="team-role" data-i18n="team_m1_role">CEO & Founder</div>
+            <p data-i18n="team_m1_desc">
               Visionary leader of IRONWOLF and Front-end Developer with a strong
               focus on design, product thinking, and team direction.
             </p>
@@ -1825,6 +1936,8 @@
               </a>
             </div>
           </div>
+
+          <!-- Polina Sladkeivh -->
           <div class="team-card reveal">
             <div class="team-avatar">
               <svg viewBox="0 0 24 24">
@@ -1833,8 +1946,10 @@
               </svg>
             </div>
             <h3>Polina Sladkeivh</h3>
-            <div class="team-role">Financial Director</div>
-            <p>
+            <div class="team-role" data-i18n="team_m2_role">
+              Financial Director
+            </div>
+            <p data-i18n="team_m2_desc">
               Financial Director with 5+ years of experience in banking and
               lending, specializing in financial flow management and business
               growth strategy.
@@ -1857,6 +1972,8 @@
               </a>
             </div>
           </div>
+
+          <!-- Maksim Mukhachev -->
           <div class="team-card reveal">
             <div class="team-avatar">
               <svg viewBox="0 0 24 24">
@@ -1865,8 +1982,10 @@
               </svg>
             </div>
             <h3>Maksim Mukhachev</h3>
-            <div class="team-role">Senior Lead Dev and Engineer</div>
-            <p>
+            <div class="team-role" data-i18n="team_m3_role">
+              Senior Lead Dev and Engineer
+            </div>
+            <p data-i18n="team_m3_desc">
               Senior Java Engineer with 10 years of experience in backend
               development and system architecture, including work at EPAM.
               Strong expertise in designing scalable enterprise solutions.
@@ -1889,6 +2008,8 @@
               </a>
             </div>
           </div>
+
+          <!-- Denis Kramskyi -->
           <div class="team-card reveal">
             <div class="team-avatar">
               <svg viewBox="0 0 24 24">
@@ -1897,8 +2018,8 @@
               </svg>
             </div>
             <h3>Denis Kramskyi</h3>
-            <div class="team-role">Developer</div>
-            <p>
+            <div class="team-role" data-i18n="team_m4_role">Developer</div>
+            <p data-i18n="team_m4_desc">
               Strong mathematics and algorithms specialist with a focus on
               automation and building efficient computational solutions.
             </p>
@@ -1929,11 +2050,15 @@
       <div class="section-container">
         <div class="about-content">
           <div class="about-wolf-logo reveal">
-            <img class="wolf-footer" src="ironwolflogo.jpg" />
+            <img
+              class="wolf-footer"
+              src="ironwolflogo.jpg"
+              alt="IRON WOLF logo"
+            />
           </div>
           <div class="about-info reveal">
-            <h2>About us</h2>
-            <p>
+            <h2 data-i18n="about_title">About us</h2>
+            <p data-i18n="about_text">
               IRON WOLF is a team that specializes in programming, design,
               automation, and development of Telegram solutions. We create clear
               and practical digital products: from interfaces and websites to
@@ -1945,25 +2070,25 @@
                 <svg viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span>International team</span>
+                <span data-i18n="about_f1">International team</span>
               </div>
               <div class="about-feature">
                 <svg viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span>Flexibility in work</span>
+                <span data-i18n="about_f2">Flexibility in work</span>
               </div>
               <div class="about-feature">
                 <svg viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span>Engineering approach</span>
+                <span data-i18n="about_f3">Engineering approach</span>
               </div>
               <div class="about-feature">
                 <svg viewBox="0 0 24 24">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span>Digital ecosystem</span>
+                <span data-i18n="about_f4">Digital ecosystem</span>
               </div>
             </div>
           </div>
@@ -1974,8 +2099,8 @@
     <!-- ==================== CONTACT SECTION ==================== -->
     <section id="contact" class="contact-section">
       <div class="container">
-        <h2 class="section-title">Contact Us</h2>
-        <p class="section-subtitle">
+        <h2 class="section-title" data-i18n="contact_title">Contact Us</h2>
+        <p class="section-subtitle" data-i18n="contact_subtitle">
           Let's discuss your project. Fill out the form below or reach out
           directly.
         </p>
@@ -1983,26 +2108,42 @@
         <div class="contact-container">
           <!-- Контактная информация -->
           <div class="contact-card info-card">
-            <h3>Business Details</h3>
+            <h3 data-i18n="contact_business">Business Details</h3>
             <ul class="info-list">
-              <li><strong>Contact Person:</strong> Ivan Sladkevich</li>
-              <li><strong>NIP (Poland):</strong> 9552584050</li>
               <li>
-                <strong>Phone:</strong>
+                <strong data-i18n="contact_name">Contact Person:</strong> Ivan
+                Sladkevich
+              </li>
+              <li>
+                <strong data-i18n="contact_nip">NIP (Poland):</strong>
+                9552584050
+              </li>
+              <li>
+                <strong data-i18n="contact_phone">Phone:</strong>
                 <a href="tel:+48517473712">+48 517 473 712</a>
               </li>
               <li>
-                <strong>Email:</strong>
+                <strong data-i18n="contact_email">Email:</strong>
                 <a href="mailto:iron.wolf.vojchan@gmail.com"
                   >iron.wolf.vojchan@gmail.com</a
                 >
               </li>
-              <li><strong>Address:</strong> ul. Lumumby 3/336</li>
-              <li><strong>Postal Code:</strong> 91-404 Łódź, Poland</li>
+              <li>
+                <strong data-i18n="contact_address">Address:</strong> ul.
+                Lumumby 3/336
+              </li>
+              <li>
+                <strong data-i18n="contact_postal">Postal Code:</strong> 91-404
+                Łódź, Poland
+              </li>
             </ul>
             <div class="social-links">
-              <a href="#" class="social-btn">Telegram</a>
-              <a href="#" class="social-btn">LinkedIn</a>
+              <a href="#" class="social-btn" data-i18n="contact_telegram"
+                >Telegram</a
+              >
+              <a href="#" class="social-btn" data-i18n="contact_linkedin"
+                >LinkedIn</a
+              >
             </div>
           </div>
 
@@ -2010,43 +2151,49 @@
           <div class="contact-card">
             <form id="contactForm" class="contact-form" method="POST">
               <div class="form-group">
-                <label for="name">Full Name</label>
+                <label for="name" data-i18n="form_name">Full Name</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   class="form-input"
+                  data-i18n-placeholder="form_name_placeholder"
                   placeholder="Ivan Sladkevich"
                   required
                 />
               </div>
               <div class="form-group">
-                <label for="email">Email Address</label>
+                <label for="email" data-i18n="form_email">Email Address</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   class="form-input"
+                  data-i18n-placeholder="form_email_placeholder"
                   placeholder="you@company.com"
                   required
                 />
               </div>
               <div class="form-group">
-                <label for="phone">Phone (optional)</label>
+                <label for="phone" data-i18n="form_phone"
+                  >Phone (optional)</label
+                >
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
                   class="form-input"
+                  data-i18n-placeholder="form_phone_placeholder"
                   placeholder="+48 XXX XXX XXX"
                 />
               </div>
               <div class="form-group">
-                <label for="message">Message</label>
+                <label for="message" data-i18n="form_message">Message</label>
                 <textarea
                   id="message"
                   name="message"
                   class="form-input"
+                  data-i18n-placeholder="form_message_placeholder"
                   placeholder="Tell us about your project..."
                   required
                 ></textarea>
@@ -2076,14 +2223,20 @@
                     cursor: pointer;
                     line-height: 1.4;
                   "
+                  data-i18n="form_gdpr"
                 >
                   I agree to the processing of my personal data in accordance
                   with GDPR regulations.
                 </label>
               </div>
               <button type="submit" id="submitBtn" class="btn-submit">
-                <span id="btnText">Send Message</span>
-                <span id="btnLoader" style="display: none">Sending...</span>
+                <span id="btnText" data-i18n="form_submit">Send Message</span>
+                <span
+                  id="btnLoader"
+                  style="display: none"
+                  data-i18n="form_sending"
+                  >Sending...</span
+                >
               </button>
               <div
                 id="formMessage"
@@ -2125,12 +2278,14 @@
           </svg>
           <span>IRON WOLF</span>
         </div>
-        <p class="footer-copy">© 2026 IRON WOLF. All rights reserved.</p>
+        <p class="footer-copy" data-i18n="footer_rights">
+          © 2026 IRON WOLF. All rights reserved.
+        </p>
         <div class="footer-links">
-          <a href="#services">Services</a>
-          <a href="#coin">IWC</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#team">Team</a>
+          <a href="#services" data-i18n="nav_services">Services</a>
+          <a href="#coin" data-i18n="footer_iwc">IWC</a>
+          <a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a>
+          <a href="#team" data-i18n="nav_team">Team</a>
         </div>
       </div>
     </footer>
@@ -2428,5 +2583,15 @@
         });
       });
     </script>
+
+    <!-- 2. Подключение файла с переводами (ДОБАВЛЯЕМ ЭТО) -->
+    <script src="i18n.js"></script>
+
+    <!-- Language Switcher (на мобильном будет под лого) -->
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="pl">PL</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
   </body>
 </html>
