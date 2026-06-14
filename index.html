@@ -36,15 +36,48 @@
         --border-glow: rgba(255, 77, 77, 0.3);
       }
 
-      html {
-        scroll-behavior: smooth;
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
       }
+
       body {
         font-family: "Inter", sans-serif;
-        background-color: var(--bg-primary);
         color: var(--text-primary);
         overflow-x: hidden;
         line-height: 1.6;
+        background-color: #0a0a0f; /* Резервный цвет на случай долгой загрузки */
+        position: relative;
+      }
+
+      /* Фон вынесен в фиксированный слой */
+      body::before {
+        content: "";
+        position: fixed; /* Фиксирует фон относительно экрана, а не контента */
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        background-image:
+          linear-gradient(rgba(10, 10, 15, 0.82), rgba(10, 10, 15, 0.88)),
+          url("bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        will-change: transform; /* Оптимизация рендеринга для мобильных GPU */
+      }
+
+      @media (max-width: 768px) {
+        body::before {
+          background-image:
+            linear-gradient(rgba(10, 10, 15, 0.82), rgba(10, 10, 15, 0.88)),
+            url("iron-wolf-hero-bg-mobile.jpg");
+          /* На мобильных часто лучше смещать важной части вверх */
+          background-position: center top;
+        }
       }
 
       /* Scrollbar */
@@ -1253,6 +1286,10 @@
 
         .coin-stats {
           grid-template-columns: repeat(3, 1fr);
+        }
+
+        .about-info {
+          padding: 2rem;
         }
       }
 
